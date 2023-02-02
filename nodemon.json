@@ -1,0 +1,6 @@
+{
+    "watch": ["src","environment.ts"],
+    "ext": "ts",
+    "ignore": [],
+    "exec": "node --inspect -r tsconfig-paths/register -r sucrase/register"
+  }
