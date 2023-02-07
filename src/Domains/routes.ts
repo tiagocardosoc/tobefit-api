@@ -4,6 +4,7 @@ const route = Router();
 
 export const Routes = [
     // Differents routes,
+
     route.get(
         "/",
         (req, res) => {
