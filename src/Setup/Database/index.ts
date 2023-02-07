@@ -1,6 +1,6 @@
 import { databaseConfig } from '../../Config/MySql';
 import { Models } from '../../Domains/models';
-import {Sequelize} from 'sequelize';
+import { Sequelize } from 'sequelize';
 
 class Database {
     private mysql: Sequelize;
@@ -14,8 +14,8 @@ class Database {
             this.setupMySQLConnection();
             await this.testMySQLConnection();
             this.configMySQLModels();
-			await this.syncMySQLWithModels()
-        } catch(error) {
+            await this.syncMySQLWithModels()
+        } catch (error) {
             return error;
         }
     }
@@ -32,7 +32,7 @@ class Database {
                 databaseConfig.password,
                 databaseConfig.options
             )
-        } catch(error) {
+        } catch (error) {
             return error;
         }
     }
@@ -41,7 +41,7 @@ class Database {
         try {
             await this.mysql.authenticate();
             console.log(`Connected to MySQL... [${databaseConfig.options.host}:${databaseConfig.options.port}]`)
-        } catch(error) {
+        } catch (error) {
             return error;
         }
     }
@@ -62,12 +62,11 @@ class Database {
 
     private async syncMySQLWithModels() {
         console.log('===== Initializing synchronization to database... ======');
-        console.time("Time to sync database!!!");
+        console.log("Time to sync database!!!");
         try {
             await this.mysql.sync({ alter: true, force: false });
-
             console.log('SUCCESS synchronization process!')
-        } catch(error) {
+        } catch (error) {
             console.log(error);
             console.log('Synchronization to database FAILED!')
         }
